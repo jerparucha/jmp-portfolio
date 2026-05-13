@@ -7,6 +7,7 @@ export const routes: Routes = [
   },
   {
     path: 'library',
+    title: 'Library',
     loadComponent: () => import('./pages/library/library').then(m => m.LibraryPage),
   },
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'skills',
+    title: 'Skills',
     loadComponent: () => import('./pages/skills/skills').then(m => m.SkillsPage),
   },
   {
