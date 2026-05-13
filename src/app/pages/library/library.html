@@ -1,3 +1,22 @@
-<div class="library-page">
-  <h1>Library</h1>
+<div class="library">
+  <div class="library__header">
+    <h1 class="library__heading">Library</h1>
+    <span class="library__count">{{ projects.length }} projects</span>
+  </div>
+  <div class="library__grid">
+    @for (project of projects; track project.slug) {
+      <a class="library__card" [routerLink]="['/library', project.slug]">
+        <div class="library__cover"></div>
+        <div class="library__card-info">
+          <h3 class="library__card-name">{{ project.name }}</h3>
+          <span class="library__card-type">{{ project.type }}</span>
+          <div class="library__card-tags">
+            @for (tag of project.tags; track tag) {
+              <span class="library__card-tag">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      </a>
+    }
+  </div>
 </div>
