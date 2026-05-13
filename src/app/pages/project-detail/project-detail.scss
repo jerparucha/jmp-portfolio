@@ -20,6 +20,11 @@
     border-radius: 3px;
     overflow: hidden;
     margin-bottom: var(--spacing-xl);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+    }
   }
 
   &__hero-cover {
@@ -27,6 +32,10 @@
     flex-shrink: 0;
     aspect-ratio: 460 / 215;
     background-color: var(--color-border);
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   &__hero-info {
@@ -35,6 +44,10 @@
     flex-direction: column;
     gap: var(--spacing-sm);
     justify-content: center;
+
+    @media (max-width: 768px) {
+      padding: var(--spacing-md);
+    }
   }
 
   &__type {
@@ -69,6 +82,10 @@
     display: flex;
     gap: var(--spacing-xl);
     align-items: flex-start;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   &__main {
@@ -155,6 +172,10 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   &__cta {
