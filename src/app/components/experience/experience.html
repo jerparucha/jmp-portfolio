@@ -1,0 +1,21 @@
+<section class="experience">
+  <h2 class="experience__heading">Experience</h2>
+  <div class="experience__timeline">
+    @for (item of items; track item.company) {
+      <div class="experience__item">
+        <div class="experience__header">
+          <div>
+            <h3 class="experience__role">{{ item.role }}</h3>
+            <p class="experience__company">{{ item.company }}</p>
+          </div>
+          <span class="experience__period">{{ item.period }}</span>
+        </div>
+        <ul class="experience__bullets">
+          @for (bullet of item.bullets; track bullet) {
+            <li>{{ bullet }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+</section>
