@@ -1,6 +1,10 @@
-<app-nav />
-<main class="main-content">
-  <div class="route-wrapper" [@routeAnimations]="getRouteState(outlet)">
-    <router-outlet #outlet="outlet" />
-  </div>
-</main>
+@if (isAuthorized()) {
+  <app-nav />
+  <main class="main-content">
+    <div class="route-wrapper" [@routeAnimations]="getRouteState(outlet)">
+      <router-outlet #outlet="outlet" />
+    </div>
+  </main>
+} @else {
+  <app-password-gate (authorized)="onAuthorized()" />
+}
