@@ -1,3 +1,21 @@
-<div class="skills-page">
-  <h1>Skills</h1>
+<div class="skills">
+  <div class="skills__header">
+    <h1 class="skills__heading">Skills</h1>
+  </div>
+
+  @for (category of categories; track category.name) {
+    <section class="skills__section">
+      <h2 class="skills__section-heading">{{ category.name }}</h2>
+      <div class="skills__grid">
+        @for (skill of category.skills; track skill) {
+          <div class="skills__card">
+            <div class="skills__card-icon">
+              <span class="skills__card-initial">{{ skill[0] }}</span>
+            </div>
+            <span class="skills__card-name">{{ skill }}</span>
+          </div>
+        }
+      </div>
+    </section>
+  }
 </div>
