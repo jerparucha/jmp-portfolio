@@ -10,4 +10,12 @@
   width: 100%;
   margin: 0 auto;
   padding: var(--spacing-xl) var(--spacing-md);
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+}
+
+.route-wrapper {
+  position: relative;
 }

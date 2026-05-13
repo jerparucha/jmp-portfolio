@@ -1,4 +1,5 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { PROJECTS } from '../../data/projects';
 
@@ -10,6 +11,7 @@ import { PROJECTS } from '../../data/projects';
 })
 export class ProjectDetailPage {
   private router = inject(Router);
+  private titleService = inject(Title);
 
   slug = input<string>('');
 
@@ -17,7 +19,10 @@ export class ProjectDetailPage {
 
   constructor() {
     effect(() => {
-      if (this.slug() && !this.project()) {
+      const p = this.project();
+      if (p) {
+        this.titleService.setTitle(`${p.name} — Jerome Mari Parucha`);
+      } else if (this.slug()) {
         this.router.navigate(['/library']);
       }
     });
