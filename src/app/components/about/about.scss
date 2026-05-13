@@ -7,6 +7,12 @@
   gap: var(--spacing-2xl);
   margin-bottom: var(--spacing-xl);
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+
   &__bio {
     flex: 1;
 
@@ -40,6 +46,14 @@
     gap: var(--spacing-md);
     padding-left: var(--spacing-2xl);
     border-left: 1px solid var(--color-border);
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding-left: 0;
+      padding-top: var(--spacing-lg);
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+    }
   }
 
   &__info-item {
