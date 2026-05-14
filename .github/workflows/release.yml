@@ -18,6 +18,10 @@ jobs:
       - name: Generate release notes
         id: notes
         run: |
+          TAG="${{ github.ref_name }}"
+          TITLE=$(git tag -l --format='%(contents:subject)' "$TAG")
+          [ -z "$TITLE" ] && TITLE="$TAG"
+
           PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
           if [ -n "$PREV_TAG" ]; then
             FEATS=$(git log --pretty=format:"%s" $PREV_TAG..HEAD | grep "^feat:" | sed 's/^feat: /- /')
@@ -32,6 +36,8 @@ jobs:
           [ -n "$FEATS" ] && BODY+="$FEATS"$'\n'
           [ -n "$FIXES" ] && BODY+="$FIXES"$'\n'
           [ -n "$CHORE" ] && BODY+="$CHORE"$'\n'
+
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
           echo "body<<EOF" >> $GITHUB_OUTPUT
           echo "$BODY" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -39,6 +45,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          name: ${{ steps.notes.outputs.title }}
           body: ${{ steps.notes.outputs.body }}
 
       - name: Notify Discord — released
