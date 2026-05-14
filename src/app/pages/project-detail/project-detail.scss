@@ -109,6 +109,7 @@
 
     &[data-status='Live'] { color: #5ba85a; }
     &[data-status='In Progress'] { color: #e8a838; }
+    &[data-status='Unpublished'] { color: #64748b; }
     &[data-status='Archived'] { color: var(--color-text-muted); }
   }
 

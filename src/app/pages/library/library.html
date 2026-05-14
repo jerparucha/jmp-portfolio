@@ -27,7 +27,6 @@
         </button>
       </div>
 
-      <button class="library__nav-collections" disabled>Collections</button>
 
       <div class="library__nav-list">
       @for (project of state.filteredProjects(); track project.slug) {
@@ -99,7 +98,7 @@
         @if (state.hasActiveFilters) {
           <button class="library__filter-clear" (click)="state.clearFilters()">Clear all filters</button>
         }
-        <button class="library__filter-apply" (click)="filterPanelOpen.set(false)">Apply</button>
+        <button class="library__filter-apply" (click)="filterPanelOpen.set(false)">Close</button>
       </div>
     </div>
   }
