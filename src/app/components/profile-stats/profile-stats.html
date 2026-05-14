@@ -1,26 +1,26 @@
 <div class="profile-stats">
   <h3 class="profile-stats__heading">Profile Info</h3>
 
-  <div class="profile-stats__item">
+  <a class="profile-stats__item profile-stats__item--link" routerLink="/library">
     <span class="profile-stats__label">Projects</span>
     <span class="profile-stats__value profile-stats__value--accent">{{ projectCount }}</span>
-  </div>
-  <div class="profile-stats__item">
+  </a>
+  <a class="profile-stats__item profile-stats__item--link" routerLink="/" fragment="experience">
     <span class="profile-stats__label">Experience</span>
     <span class="profile-stats__value profile-stats__value--accent">{{ experienceYears }}+ yrs</span>
-  </div>
-  <div class="profile-stats__item">
+  </a>
+  <a class="profile-stats__item profile-stats__item--link" routerLink="/skills">
     <span class="profile-stats__label">Technologies</span>
     <span class="profile-stats__value profile-stats__value--accent">{{ techCount }}</span>
-  </div>
-  <div class="profile-stats__item">
+  </a>
+  <a class="profile-stats__item profile-stats__item--link" routerLink="/" fragment="achievements">
     <span class="profile-stats__label">Certifications</span>
-    <span class="profile-stats__value profile-stats__value--accent">1</span>
-  </div>
-  <div class="profile-stats__item">
+    <span class="profile-stats__value profile-stats__value--accent">{{ certCount }}</span>
+  </a>
+  <a class="profile-stats__item profile-stats__item--link" routerLink="/" fragment="achievements">
     <span class="profile-stats__label">Education</span>
     <span class="profile-stats__value">University of Santo Tomas</span>
-  </div>
+  </a>
   <div class="profile-stats__item">
     <span class="profile-stats__label">Location</span>
     <span class="profile-stats__value">Philippines</span>
