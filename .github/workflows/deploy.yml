@@ -30,3 +30,25 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist/jmp-portfolio/browser --project-name=jmp-portfolio --branch=${{ github.ref_name }}
+
+      - name: Notify Discord — success
+        if: success() && github.event_name == 'push'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then exit 0; fi
+          ENV="${{ github.ref_name == 'master' && 'Production' || 'Staging' }}"
+          COLOR="${{ github.ref_name == 'master' && '3066993' || '3447003' }}"
+          curl -s -H "Content-Type: application/json" \
+            -d "{\"embeds\":[{\"title\":\"Deployed to $ENV\",\"color\":$COLOR,\"description\":\"Branch: \`${{ github.ref_name }}\`\nCommit: \`${GITHUB_SHA:0:7}\`\"}]}" \
+            "$DISCORD_WEBHOOK_URL"
+
+      - name: Notify Discord — failure
+        if: failure() && github.event_name == 'push'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then exit 0; fi
+          curl -s -H "Content-Type: application/json" \
+            -d "{\"embeds\":[{\"title\":\"Pipeline Failed\",\"color\":15158332,\"description\":\"Branch: \`${{ github.ref_name }}\`\nCommit: \`${GITHUB_SHA:0:7}\`\"}]}" \
+            "$DISCORD_WEBHOOK_URL"
