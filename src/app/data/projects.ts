@@ -1,4 +1,4 @@
-export type ProjectStatus = 'Live' | 'In Progress' | 'Archived';
+export type ProjectStatus = 'Live' | 'In Progress' | 'Unpublished' | 'Archived';
 
 export interface Project {
   slug: string;
@@ -57,7 +57,7 @@ Visit a job posting and the description is automatically saved. Click Apply and 
     tags: ['Chrome Extension', 'JavaScript', 'CSS', 'Manifest V3'],
     github: 'https://github.com/jerparucha/OLJ-JD-Helper-Extension',
     demo: null,
-    status: 'Live',
+    status: 'Unpublished',
     logo: 'images/projects/olj-jd-helper-logo.svg',
     coverImage: 'images/projects/olj-jd-helper/screenshot-2.png',
     screenshots: [
