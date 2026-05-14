@@ -45,7 +45,10 @@
                      [style.backgroundImage]="project.coverImage ? 'url(' + project.coverImage + ')' : null"></div>
                 <div class="library-grid__card-info">
                   <h3 class="library-grid__card-name">{{ project.name }}</h3>
-                  <span class="library-grid__card-type">{{ project.type }}</span>
+                  <div class="library-grid__card-meta">
+                    <span class="library-grid__card-type">{{ project.type }}</span>
+                    <span class="library-grid__card-year">{{ project.year }}</span>
+                  </div>
                   <div class="library-grid__card-tags">
                     @for (tag of project.tags; track tag) {
                       <span class="library-grid__card-tag">{{ tag }}</span>

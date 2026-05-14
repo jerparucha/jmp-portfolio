@@ -22,7 +22,7 @@ export const PROJECTS: Project[] = [
     slug: 'har-analyzer',
     name: 'HAR File Analyzer',
     type: 'Web App',
-    year: 2025,
+    year: 2026,
     description: 'Web-based tool for inspecting and analyzing HTTP Archive (HAR) files with waterfall charts, security analysis, and request inspection.',
     longDescription: `A web-based tool for inspecting and analyzing HTTP Archive (HAR) files. Load a HAR file and instantly explore network activity through multiple views.
 
