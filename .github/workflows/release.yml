@@ -19,23 +19,29 @@ jobs:
         id: notes
         run: |
           TAG="${{ github.ref_name }}"
-          TITLE=$(git tag -l --format='%(contents:subject)' "$TAG")
+          TITLE=$(git for-each-ref "refs/tags/$TAG" --format='%(contents:subject)')
           [ -z "$TITLE" ] && TITLE="$TAG"
 
           PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
           if [ -n "$PREV_TAG" ]; then
-            FEATS=$(git log --pretty=format:"%s" $PREV_TAG..HEAD | grep "^feat:" | sed 's/^feat: /- /')
-            FIXES=$(git log --pretty=format:"%s" $PREV_TAG..HEAD | grep "^fix:"  | sed 's/^fix: /- /')
-            CHORE=$(git log --pretty=format:"%s" $PREV_TAG..HEAD | grep "^chore:" | sed 's/^chore: /- /')
+            LOG_RANGE="$PREV_TAG..HEAD"
           else
-            FEATS=$(git log --pretty=format:"%s" | grep "^feat:"  | sed 's/^feat: /- /')
-            FIXES=$(git log --pretty=format:"%s" | grep "^fix:"   | sed 's/^fix: /- /')
-            CHORE=$(git log --pretty=format:"%s" | grep "^chore:" | sed 's/^chore: /- /')
+            LOG_RANGE=""
           fi
+
+          FEATS=$(git log --pretty=format:"%s" $LOG_RANGE | grep "^feat:" | sed 's/^feat: /- /')
+          FIXES=$(git log --pretty=format:"%s" $LOG_RANGE | grep "^fix:"  | sed 's/^fix: /- /')
+          CHORE=$(git log --pretty=format:"%s" $LOG_RANGE | grep "^chore:" | sed 's/^chore: /- /')
+          ISSUES=$(git log --pretty=format:"%s %b" $LOG_RANGE | grep -oE '(Closes|Refs) #[0-9]+' | grep -oE '#[0-9]+' | sort -u | sed 's/^/- /')
+
           BODY="## What's new"$'\n'
           [ -n "$FEATS" ] && BODY+="$FEATS"$'\n'
           [ -n "$FIXES" ] && BODY+="$FIXES"$'\n'
           [ -n "$CHORE" ] && BODY+="$CHORE"$'\n'
+          if [ -n "$ISSUES" ]; then
+            BODY+=$'\n'"## Issues closed"$'\n'
+            BODY+="$ISSUES"$'\n'
+          fi
 
           echo "title=$TITLE" >> $GITHUB_OUTPUT
           echo "body<<EOF" >> $GITHUB_OUTPUT
