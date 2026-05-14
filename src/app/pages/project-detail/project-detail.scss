@@ -1,4 +1,6 @@
 .detail {
+  padding: var(--spacing-xl);
+
   &__back {
     display: inline-block;
     color: var(--color-text-muted);
