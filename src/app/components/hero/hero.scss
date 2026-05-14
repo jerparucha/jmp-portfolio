@@ -18,8 +18,10 @@
   &__avatar {
     width: 128px;
     height: 128px;
-    background-color: var(--color-border);
     flex-shrink: 0;
+    object-fit: cover;
+    object-position: top;
+    display: block;
   }
 
   &__info {
