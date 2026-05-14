@@ -3,7 +3,8 @@
   <div class="recent-activity__list">
     @for (project of projects; track project.slug) {
       <a class="recent-activity__card" [routerLink]="['/library', project.slug]">
-        <div class="recent-activity__cover"></div>
+        <div class="recent-activity__cover"
+             [style.backgroundImage]="project.coverImage ? 'url(' + project.coverImage + ')' : null"></div>
         <div class="recent-activity__info">
           <h3 class="recent-activity__name">{{ project.name }}</h3>
           <p class="recent-activity__description">{{ project.description }}</p>
