@@ -1,23 +1,34 @@
 import { Component } from '@angular/core';
 import { SKILL_CATEGORIES, SkillCategory } from '../../data/skills';
 
-const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+const DEVICONS = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+const SIMPLEICONS = 'https://cdn.simpleicons.org';
 
 const ICON_MAP: Record<string, string> = {
-  'JavaScript':      `${CDN}/javascript/javascript-original.svg`,
-  'TypeScript':      `${CDN}/typescript/typescript-original.svg`,
-  'C#':              `${CDN}/csharp/csharp-original.svg`,
-  'HTML':            `${CDN}/html5/html5-original.svg`,
-  'CSS':             `${CDN}/css3/css3-original.svg`,
-  'Angular':         `${CDN}/angular/angular-original.svg`,
-  'AngularJS':       `${CDN}/angularjs/angularjs-original.svg`,
-  'ASP.NET':         `${CDN}/dotnetcore/dotnetcore-original.svg`,
-  'GitHub Actions':  `${CDN}/github/github-original.svg`,
-  'Azure DevOps':    `${CDN}/azuredevops/azuredevops-original.svg`,
-  'Microsoft Azure': `${CDN}/azure/azure-original.svg`,
-  'VS Code':         `${CDN}/vscode/vscode-original.svg`,
-  'Visual Studio':   `${CDN}/visualstudio/visualstudio-original.svg`,
-  'Postman':         `${CDN}/postman/postman-original.svg`,
+  // Languages
+  'JavaScript':      `${DEVICONS}/javascript/javascript-original.svg`,
+  'TypeScript':      `${DEVICONS}/typescript/typescript-original.svg`,
+  'SQL':             `${DEVICONS}/azuresqldatabase/azuresqldatabase-original.svg`,
+  'C#':              `${DEVICONS}/csharp/csharp-original.svg`,
+  'HTML':            `${DEVICONS}/html5/html5-original.svg`,
+  'CSS':             `${DEVICONS}/css3/css3-original.svg`,
+  // Frameworks & Libraries
+  'Angular':         `${DEVICONS}/angular/angular-original.svg`,
+  'AngularJS':       `${DEVICONS}/angularjs/angularjs-original.svg`,
+  'ASP.NET':         `${DEVICONS}/dotnetcore/dotnetcore-original.svg`,
+  // Developer Tools
+  'Postman':         `${DEVICONS}/postman/postman-original.svg`,
+  'Visual Studio':   `${DEVICONS}/visualstudio/visualstudio-original.svg`,
+  'VS Code':         `${DEVICONS}/vscode/vscode-original.svg`,
+  // DevOps & Cloud
+  'GitHub Actions':  `${DEVICONS}/github/github-original.svg`,
+  'Azure DevOps':    `${DEVICONS}/azuredevops/azuredevops-original.svg`,
+  'Microsoft Azure': `${DEVICONS}/azure/azure-original.svg`,
+  'Cloudflare Pages':`${DEVICONS}/cloudflare/cloudflare-original.svg`,
+  // Automation & ITSM
+  'UiPath':          `${SIMPLEICONS}/uipath`,
+  'n8n':             `${SIMPLEICONS}/n8n`,
+  'ServiceNow':      `${SIMPLEICONS}/servicenow`,
 };
 
 @Component({
