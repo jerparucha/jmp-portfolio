@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="340" viewBox="0 0 680 340">
+  <title>JMP Logo – Steam palette</title>
+  <rect x="20" y="10" width="640" height="320" rx="4" fill="#1b2838"/>
+  <rect x="20" y="10" width="640" height="52" rx="4" fill="#2a475e"/>
+  <rect x="20" y="278" width="640" height="52" rx="4" fill="#2a475e"/>
+  <rect x="24" y="14" width="632" height="312" rx="3" stroke="#66c0f4" fill="none" stroke-width="2"/>
+  <rect x="31" y="21" width="618" height="298" rx="2" stroke="#2a475e" fill="none" stroke-width="1"/>
+  <circle cx="36" cy="28" r="6" fill="#66c0f4"/><circle cx="36" cy="28" r="2.2" fill="#b0dff8"/>
+  <circle cx="644" cy="28" r="6" fill="#66c0f4"/><circle cx="644" cy="28" r="2.2" fill="#b0dff8"/>
+  <circle cx="36" cy="312" r="6" fill="#66c0f4"/><circle cx="36" cy="312" r="2.2" fill="#b0dff8"/>
+  <circle cx="644" cy="312" r="6" fill="#66c0f4"/><circle cx="644" cy="312" r="2.2" fill="#b0dff8"/>
+  <circle cx="340" cy="18" r="4" fill="#66c0f4"/><circle cx="340" cy="18" r="1.5" fill="#b0dff8"/>
+  <circle cx="340" cy="322" r="4" fill="#66c0f4"/><circle cx="340" cy="322" r="1.5" fill="#b0dff8"/>
+  <circle cx="28" cy="170" r="4" fill="#66c0f4"/><circle cx="28" cy="170" r="1.5" fill="#b0dff8"/>
+  <circle cx="652" cy="170" r="4" fill="#66c0f4"/><circle cx="652" cy="170" r="1.5" fill="#b0dff8"/>
+  <line x1="32" y1="62" x2="648" y2="62" stroke="#66c0f4" stroke-width="1" stroke-dasharray="3 5"/>
+  <line x1="32" y1="278" x2="648" y2="278" stroke="#66c0f4" stroke-width="1" stroke-dasharray="3 5"/>
+  <g transform="translate(90,170)">
+    <rect x="-6" y="-42" width="12" height="14" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <rect x="-6" y="28" width="12" height="14" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <rect x="28" y="-6" width="14" height="12" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <rect x="-42" y="-6" width="14" height="12" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <g transform="rotate(45)">
+      <rect x="-6" y="-42" width="12" height="14" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+      <rect x="-6" y="28" width="12" height="14" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+      <rect x="28" y="-6" width="14" height="12" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+      <rect x="-42" y="-6" width="14" height="12" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    </g>
+    <circle cx="0" cy="0" r="30" fill="#1b2838" stroke="#66c0f4" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="20" fill="#2a475e" stroke="#4c6a7e" stroke-width="1"/>
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#66c0f4" stroke-width="1" opacity="0.5"/>
+    <line x1="-18" y1="0" x2="18" y2="0" stroke="#66c0f4" stroke-width="1" opacity="0.5"/>
+    <line x1="-13" y1="-13" x2="13" y2="13" stroke="#66c0f4" stroke-width="1" opacity="0.5"/>
+    <line x1="13" y1="-13" x2="-13" y2="13" stroke="#66c0f4" stroke-width="1" opacity="0.5"/>
+    <circle cx="0" cy="0" r="8" fill="#66c0f4"/>
+    <circle cx="0" cy="0" r="3.5" fill="#1b2838"/>
+  </g>
+  <g transform="translate(590,170)">
+    <rect x="-5" y="-32" width="10" height="11" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <rect x="-5" y="21" width="10" height="11" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <rect x="21" y="-5" width="11" height="10" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <rect x="-32" y="-5" width="11" height="10" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    <g transform="rotate(45)">
+      <rect x="-5" y="-32" width="10" height="11" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+      <rect x="-5" y="21" width="10" height="11" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+      <rect x="21" y="-5" width="11" height="10" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+      <rect x="-32" y="-5" width="11" height="10" rx="2" fill="#2a475e" stroke="#66c0f4" stroke-width="1.5"/>
+    </g>
+    <circle cx="0" cy="0" r="22" fill="#1b2838" stroke="#66c0f4" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="14" fill="#2a475e" stroke="#4c6a7e" stroke-width="1"/>
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#66c0f4" stroke-width="1" opacity="0.5"/>
+    <line x1="-12" y1="0" x2="12" y2="0" stroke="#66c0f4" stroke-width="1" opacity="0.5"/>
+    <circle cx="0" cy="0" r="5.5" fill="#66c0f4"/>
+    <circle cx="0" cy="0" r="2.5" fill="#1b2838"/>
+  </g>
+  <path d="M155 62 Q163 48 154 35 Q145 22 153 11" stroke="#66c0f4" fill="none" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+  <path d="M178 62 Q188 46 178 32 Q169 20 179 10" stroke="#66c0f4" fill="none" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+  <path d="M490 62 Q498 47 489 34 Q481 22 490 11" stroke="#66c0f4" fill="none" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+  <path d="M513 62 Q522 46 513 32 Q504 20 514 10" stroke="#66c0f4" fill="none" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+  <circle cx="150" cy="295" r="3.5" fill="#66c0f4"/><circle cx="150" cy="295" r="1.2" fill="#b0dff8"/>
+  <circle cx="176" cy="295" r="3.5" fill="#66c0f4"/><circle cx="176" cy="295" r="1.2" fill="#b0dff8"/>
+  <circle cx="202" cy="295" r="3.5" fill="#66c0f4"/><circle cx="202" cy="295" r="1.2" fill="#b0dff8"/>
+  <circle cx="478" cy="295" r="3.5" fill="#66c0f4"/><circle cx="478" cy="295" r="1.2" fill="#b0dff8"/>
+  <circle cx="504" cy="295" r="3.5" fill="#66c0f4"/><circle cx="504" cy="295" r="1.2" fill="#b0dff8"/>
+  <circle cx="530" cy="295" r="3.5" fill="#66c0f4"/><circle cx="530" cy="295" r="1.2" fill="#b0dff8"/>
+  <text x="153" y="238" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="168px" fill="#2a475e">JMP</text>
+  <text x="150" y="234" fill="#c6d4df" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="168px">J</text>
+  <text x="262" y="234" fill="#66c0f4" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="168px">M</text>
+  <text x="428" y="234" fill="#c6d4df" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="168px">P</text>
+</svg>
