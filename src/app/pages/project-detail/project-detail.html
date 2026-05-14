@@ -30,13 +30,13 @@
         </div>
 
         <!-- #65: Tab bar -->
-        <div class="detail__tabs">
-          <button class="detail__tab" [class.active]="activeTab() === 'overview'" (click)="activeTab.set('overview')">Overview</button>
-          <button class="detail__tab" [class.active]="activeTab() === 'screenshots'" (click)="activeTab.set('screenshots')">Screenshots</button>
-          <button class="detail__tab" [class.active]="activeTab() === 'tech'" (click)="activeTab.set('tech')">Tech Stack</button>
+        <div class="detail__tabs" role="tablist">
+          <button class="detail__tab" role="tab" [attr.aria-selected]="activeTab() === 'overview'" (click)="activeTab.set('overview')">Overview</button>
+          <button class="detail__tab" role="tab" [attr.aria-selected]="activeTab() === 'screenshots'" (click)="activeTab.set('screenshots')">Screenshots</button>
+          <button class="detail__tab" role="tab" [attr.aria-selected]="activeTab() === 'tech'" (click)="activeTab.set('tech')">Tech Stack</button>
         </div>
 
-        <div class="detail__tab-content">
+        <div class="detail__tab-content" role="tabpanel">
           @if (activeTab() === 'overview') {
             <p class="detail__description">{{ p.longDescription }}</p>
           }
@@ -50,7 +50,13 @@
                     <div class="detail__screenshot-thumb"
                          [class.active]="selectedScreenshot() === shot"
                          [style.backgroundImage]="'url(' + shot + ')'"
-                         (click)="selectedScreenshot.set(shot)"></div>
+                         (click)="selectedScreenshot.set(shot)"
+                         (keydown.enter)="selectedScreenshot.set(shot)"
+                         (keydown.space)="selectedScreenshot.set(shot)"
+                         role="button"
+                         tabindex="0"
+                         [attr.aria-label]="'Screenshot ' + ($index + 1)"
+                         [attr.aria-pressed]="selectedScreenshot() === shot"></div>
                   }
                 </div>
               }

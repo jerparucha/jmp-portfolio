@@ -10,13 +10,13 @@
         <button class="library-grid__control-btn" [class.active]="state.sortBy() === 'name'" (click)="state.sortBy.set('name')">Name</button>
       </div>
       <div class="library-grid__view">
-        <button class="library-grid__control-btn" [class.active]="viewMode() === 'grid'" (click)="viewMode.set('grid')" title="Grid view">
+        <button class="library-grid__control-btn" [class.active]="viewMode() === 'grid'" (click)="viewMode.set('grid')" aria-label="Grid view">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
             <rect x="0" y="0" width="6" height="6"/><rect x="8" y="0" width="6" height="6"/>
             <rect x="0" y="8" width="6" height="6"/><rect x="8" y="8" width="6" height="6"/>
           </svg>
         </button>
-        <button class="library-grid__control-btn" [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')" title="List view">
+        <button class="library-grid__control-btn" [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')" aria-label="List view">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
             <rect x="0" y="0" width="14" height="3"/><rect x="0" y="5.5" width="14" height="3"/><rect x="0" y="11" width="14" height="3"/>
           </svg>
