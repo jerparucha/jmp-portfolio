@@ -12,6 +12,8 @@ export interface Project {
   demo: string | null;
   status: ProjectStatus;
   coverImage?: string;
+  logo?: string;
+  screenshots?: string[];
   featured?: boolean;
 }
 
@@ -30,6 +32,18 @@ Features include a summary dashboard with stat cards and donut charts, a waterfa
     demo: 'https://har-analyzer-jmp.vercel.app/',
     status: 'Live',
     featured: true,
+    logo: 'images/projects/har-analyzer-logo.svg',
+    coverImage: 'images/projects/har-analyzer/screenshot-2.jpg',
+    screenshots: [
+      'images/projects/har-analyzer/screenshot-2.jpg',
+      'images/projects/har-analyzer/screenshot-7.jpg',
+      'images/projects/har-analyzer/screenshot-1.jpg',
+      'images/projects/har-analyzer/screenshot-3.jpg',
+      'images/projects/har-analyzer/screenshot-8.jpg',
+      'images/projects/har-analyzer/screenshot-4.jpg',
+      'images/projects/har-analyzer/screenshot-5.jpg',
+      'images/projects/har-analyzer/screenshot-6.jpg',
+    ],
   },
   {
     slug: 'olj-jd-helper',

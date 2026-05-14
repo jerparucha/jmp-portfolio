@@ -12,7 +12,8 @@
         <div class="profile-featured__cards">
           @for (project of featuredProjects; track project.slug) {
             <a class="profile-featured__card" [routerLink]="['/library', project.slug]">
-              <div class="profile-featured__cover"></div>
+              <div class="profile-featured__cover"
+                   [style.backgroundImage]="project.coverImage ? 'url(' + project.coverImage + ')' : null"></div>
               <div class="profile-featured__info">
                 <span class="profile-featured__type">{{ project.type }}</span>
                 <h3 class="profile-featured__name">{{ project.name }}</h3>

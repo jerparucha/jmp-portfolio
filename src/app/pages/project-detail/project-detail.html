@@ -42,12 +42,18 @@
           }
           @if (activeTab() === 'screenshots') {
             <div class="detail__screenshots">
-              <div class="detail__screenshot-main"></div>
-              <div class="detail__screenshot-thumbs">
-                <div class="detail__screenshot-thumb"></div>
-                <div class="detail__screenshot-thumb"></div>
-                <div class="detail__screenshot-thumb"></div>
-              </div>
+              <div class="detail__screenshot-main"
+                   [style.backgroundImage]="selectedScreenshot() ? 'url(' + selectedScreenshot() + ')' : null"></div>
+              @if (p.screenshots && p.screenshots.length > 1) {
+                <div class="detail__screenshot-thumbs">
+                  @for (shot of p.screenshots; track shot) {
+                    <div class="detail__screenshot-thumb"
+                         [class.active]="selectedScreenshot() === shot"
+                         [style.backgroundImage]="'url(' + shot + ')'"
+                         (click)="selectedScreenshot.set(shot)"></div>
+                  }
+                </div>
+              }
             </div>
           }
           @if (activeTab() === 'tech') {

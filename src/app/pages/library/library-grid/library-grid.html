@@ -41,7 +41,8 @@
           <div class="library-grid__cards">
             @for (project of entry.value; track project.slug) {
               <a class="library-grid__card" [routerLink]="['/library', project.slug]">
-                <div class="library-grid__cover"></div>
+                <div class="library-grid__cover"
+                     [style.backgroundImage]="project.coverImage ? 'url(' + project.coverImage + ')' : null"></div>
                 <div class="library-grid__card-info">
                   <h3 class="library-grid__card-name">{{ project.name }}</h3>
                   <span class="library-grid__card-type">{{ project.type }}</span>
@@ -58,7 +59,8 @@
           <div class="library-grid__list">
             @for (project of entry.value; track project.slug) {
               <a class="library-grid__list-item" [routerLink]="['/library', project.slug]">
-                <div class="library-grid__list-cover"></div>
+                <div class="library-grid__list-cover"
+                     [style.backgroundImage]="project.coverImage ? 'url(' + project.coverImage + ')' : null"></div>
                 <div class="library-grid__list-info">
                   <h3 class="library-grid__list-name">{{ project.name }}</h3>
                   <p class="library-grid__list-desc">{{ project.description }}</p>

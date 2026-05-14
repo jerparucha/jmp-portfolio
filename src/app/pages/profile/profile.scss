@@ -64,6 +64,8 @@
     width: 180px;
     flex-shrink: 0;
     background-color: var(--color-border);
+    background-size: cover;
+    background-position: center;
     aspect-ratio: 460 / 215;
 
     @media (max-width: 640px) {
