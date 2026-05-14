@@ -1,0 +1,79 @@
+<div class="library-grid">
+  <div class="library-grid__header">
+    <h1 class="library-grid__heading">Library</h1>
+    <span class="library-grid__count">{{ state.filteredProjects().length }} of {{ state.allProjects.length }} projects</span>
+
+    <div class="library-grid__controls">
+      <div class="library-grid__sort">
+        <span class="library-grid__control-label">Sort:</span>
+        <button class="library-grid__control-btn" [class.active]="state.sortBy() === 'year'" (click)="state.sortBy.set('year')">Year</button>
+        <button class="library-grid__control-btn" [class.active]="state.sortBy() === 'name'" (click)="state.sortBy.set('name')">Name</button>
+      </div>
+      <div class="library-grid__view">
+        <button class="library-grid__control-btn" [class.active]="viewMode() === 'grid'" (click)="viewMode.set('grid')" title="Grid view">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <rect x="0" y="0" width="6" height="6"/><rect x="8" y="0" width="6" height="6"/>
+            <rect x="0" y="8" width="6" height="6"/><rect x="8" y="8" width="6" height="6"/>
+          </svg>
+        </button>
+        <button class="library-grid__control-btn" [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')" title="List view">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <rect x="0" y="0" width="14" height="3"/><rect x="0" y="5.5" width="14" height="3"/><rect x="0" y="11" width="14" height="3"/>
+          </svg>
+        </button>
+      </div>
+      @if (state.hasActiveFilters) {
+        <button class="library-grid__clear" (click)="state.clearFilters()">Clear filters</button>
+      }
+    </div>
+  </div>
+
+  @if (state.filteredProjects().length === 0) {
+    <p class="library-grid__empty">No projects match the current filters.</p>
+  }
+
+  <div class="library-grid__groups">
+    @for (entry of state.groupedProjects() | keyvalue; track entry.key) {
+      <div class="library-grid__group">
+        <h2 class="library-grid__group-heading">{{ entry.key }}</h2>
+
+        @if (viewMode() === 'grid') {
+          <div class="library-grid__cards">
+            @for (project of entry.value; track project.slug) {
+              <a class="library-grid__card" [routerLink]="['/library', project.slug]">
+                <div class="library-grid__cover"></div>
+                <div class="library-grid__card-info">
+                  <h3 class="library-grid__card-name">{{ project.name }}</h3>
+                  <span class="library-grid__card-type">{{ project.type }}</span>
+                  <div class="library-grid__card-tags">
+                    @for (tag of project.tags; track tag) {
+                      <span class="library-grid__card-tag">{{ tag }}</span>
+                    }
+                  </div>
+                </div>
+              </a>
+            }
+          </div>
+        } @else {
+          <div class="library-grid__list">
+            @for (project of entry.value; track project.slug) {
+              <a class="library-grid__list-item" [routerLink]="['/library', project.slug]">
+                <div class="library-grid__list-cover"></div>
+                <div class="library-grid__list-info">
+                  <h3 class="library-grid__list-name">{{ project.name }}</h3>
+                  <p class="library-grid__list-desc">{{ project.description }}</p>
+                  <div class="library-grid__card-tags">
+                    @for (tag of project.tags; track tag) {
+                      <span class="library-grid__card-tag">{{ tag }}</span>
+                    }
+                  </div>
+                </div>
+                <span class="library-grid__list-year">{{ project.year }}</span>
+              </a>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

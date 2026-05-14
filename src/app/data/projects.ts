@@ -1,3 +1,5 @@
+export type ProjectStatus = 'Live' | 'In Progress' | 'Archived';
+
 export interface Project {
   slug: string;
   name: string;
@@ -8,6 +10,8 @@ export interface Project {
   tags: string[];
   github: string;
   demo: string | null;
+  status: ProjectStatus;
+  coverImage?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -23,6 +27,7 @@ Features include a summary dashboard with stat cards and donut charts, a waterfa
     tags: ['Angular 21', 'Angular Material', 'TypeScript', 'SCSS'],
     github: 'https://github.com/jerparucha/har-analyzer',
     demo: 'https://har-analyzer-jmp.vercel.app/',
+    status: 'Live',
   },
   {
     slug: 'olj-jd-helper',
@@ -36,5 +41,6 @@ Visit a job posting and the description is automatically saved. Click Apply and 
     tags: ['Chrome Extension', 'JavaScript', 'CSS', 'Manifest V3'],
     github: 'https://github.com/jerparucha/OLJ-JD-Helper-Extension',
     demo: null,
+    status: 'Live',
   },
 ];

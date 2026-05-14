@@ -1,63 +1,106 @@
 <div class="library">
-  <div class="library__header">
-    <h1 class="library__heading">Library</h1>
-    <span class="library__count">{{ filteredProjects().length }} of {{ allProjects.length }} projects</span>
-    @if (hasActiveFilters) {
-      <button class="library__clear" (click)="clearFilters()">Clear filters</button>
-    }
-  </div>
 
-  <div class="library__layout">
-    <aside class="library__sidebar">
-      <div class="library__filter-group">
-        <h3 class="library__filter-heading">Type</h3>
-        @for (type of allTypes; track type) {
-          <label class="library__filter-option">
-            <input type="checkbox" [checked]="selectedTypes().has(type)" (change)="toggleType(type)" />
-            {{ type }}
-          </label>
-        }
+  <!-- Left project-list sidebar -->
+  <aside class="library__nav">
+    <!-- Pinned Home — always visible, never scrolls -->
+    <a class="library__nav-home" routerLink="/library" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      Home
+    </a>
+
+    <!-- Scrollable section -->
+    <div class="library__nav-scroll">
+      <div class="library__nav-toolbar">
+        <input
+          class="library__nav-search"
+          type="text"
+          placeholder="Search..."
+          [ngModel]="state.searchQuery()"
+          (ngModelChange)="state.searchQuery.set($event)"
+        />
+        <button class="library__nav-filter-btn" (click)="filterPanelOpen.set(true)" title="Filters">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <rect x="0" y="0" width="14" height="2"/><rect x="2" y="5" width="10" height="2"/><rect x="4" y="10" width="6" height="2"/>
+          </svg>
+        </button>
       </div>
 
-      <div class="library__filter-group">
-        <h3 class="library__filter-heading">Tech</h3>
-        @for (tag of allTags; track tag) {
-          <label class="library__filter-option">
-            <input type="checkbox" [checked]="selectedTags().has(tag)" (change)="toggleTag(tag)" />
-            {{ tag }}
-          </label>
-        }
-      </div>
+      <button class="library__nav-collections" disabled>Collections</button>
 
-      <div class="library__filter-group">
-        <h3 class="library__filter-heading">Year</h3>
-        @for (year of allYears; track year) {
-          <label class="library__filter-option">
-            <input type="checkbox" [checked]="selectedYears().has(year)" (change)="toggleYear(year)" />
-            {{ year }}
-          </label>
-        }
-      </div>
-    </aside>
-
-    <div class="library__grid">
-      @for (project of filteredProjects(); track project.slug) {
-        <a class="library__card" [routerLink]="['/library', project.slug]">
-          <div class="library__cover"></div>
-          <div class="library__card-info">
-            <h3 class="library__card-name">{{ project.name }}</h3>
-            <span class="library__card-type">{{ project.type }}</span>
-            <div class="library__card-tags">
-              @for (tag of project.tags; track tag) {
-                <span class="library__card-tag">{{ tag }}</span>
-              }
-            </div>
-          </div>
+      <div class="library__nav-list">
+      @for (project of state.filteredProjects(); track project.slug) {
+        <a
+          class="library__nav-item"
+          [routerLink]="['/library', project.slug]"
+          routerLinkActive="active"
+        >
+          <div class="library__nav-thumb"></div>
+          <span class="library__nav-name">{{ project.name }}</span>
         </a>
       }
-      @if (filteredProjects().length === 0) {
-        <p class="library__empty">No projects match the selected filters.</p>
+
+      @if (state.filteredProjects().length === 0) {
+        <p class="library__nav-empty">No projects found.</p>
       }
     </div>
+    </div>
+  </aside>
+
+  <!-- Right: child route renders here (grid or detail) -->
+  <div class="library__content">
+    <router-outlet />
   </div>
+
+  <!-- Filter overlay panel -->
+  @if (filterPanelOpen()) {
+    <div class="library__filter-backdrop" (click)="filterPanelOpen.set(false)"></div>
+    <div class="library__filter-panel">
+      <div class="library__filter-panel-header">
+        <h2 class="library__filter-panel-title">Library Filters</h2>
+        <button class="library__filter-panel-close" (click)="filterPanelOpen.set(false)">✕</button>
+      </div>
+
+      <div class="library__filter-panel-body">
+        <div class="library__filter-section">
+          <h3 class="library__filter-section-title">Type</h3>
+          @for (type of state.allTypes; track type) {
+            <label class="library__filter-option">
+              <input type="checkbox" [checked]="state.selectedTypes().has(type)" (change)="state.toggleType(type)" />
+              {{ type }}
+            </label>
+          }
+        </div>
+
+        <div class="library__filter-section">
+          <h3 class="library__filter-section-title">Tech Stack</h3>
+          @for (tag of state.allTags; track tag) {
+            <label class="library__filter-option">
+              <input type="checkbox" [checked]="state.selectedTags().has(tag)" (change)="state.toggleTag(tag)" />
+              {{ tag }}
+            </label>
+          }
+        </div>
+
+        <div class="library__filter-section">
+          <h3 class="library__filter-section-title">Year</h3>
+          @for (year of state.allYears; track year) {
+            <label class="library__filter-option">
+              <input type="checkbox" [checked]="state.selectedYears().has(year)" (change)="state.toggleYear(year)" />
+              {{ year }}
+            </label>
+          }
+        </div>
+      </div>
+
+      <div class="library__filter-panel-footer">
+        @if (state.hasActiveFilters) {
+          <button class="library__filter-clear" (click)="state.clearFilters()">Clear all filters</button>
+        }
+        <button class="library__filter-apply" (click)="filterPanelOpen.set(false)">Apply</button>
+      </div>
+    </div>
+  }
+
 </div>

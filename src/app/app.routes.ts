@@ -7,12 +7,18 @@ export const routes: Routes = [
   },
   {
     path: 'library',
-    title: 'Library',
     loadComponent: () => import('./pages/library/library').then(m => m.LibraryPage),
-  },
-  {
-    path: 'library/:slug',
-    loadComponent: () => import('./pages/project-detail/project-detail').then(m => m.ProjectDetailPage),
+    children: [
+      {
+        path: '',
+        title: 'Library',
+        loadComponent: () => import('./pages/library/library-grid/library-grid').then(m => m.LibraryGridPage),
+      },
+      {
+        path: ':slug',
+        loadComponent: () => import('./pages/project-detail/project-detail').then(m => m.ProjectDetailPage),
+      },
+    ],
   },
   {
     path: 'skills',
