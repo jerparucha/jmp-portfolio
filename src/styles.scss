@@ -52,3 +52,64 @@ a {
 ul {
   list-style: none;
 }
+
+@media print {
+  :root {
+    --color-bg: #ffffff;
+    --color-bg-darker: #f5f5f5;
+    --color-panel: #f0f0f0;
+    --color-text: #111111;
+    --color-text-muted: #444444;
+    --color-accent: #0a6ea8;
+    --color-border: #cccccc;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 12pt;
+  }
+
+  app-nav,
+  app-recent-activity,
+  app-password-gate {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+  }
+
+  .route-wrapper {
+    padding: 0 !important;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 10pt;
+    color: #444444;
+  }
+
+  a[href^='/']::after,
+  a[href^='#']::after,
+  a[routerLink]::after {
+    content: none;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  section, .experience__item {
+    page-break-inside: avoid;
+  }
+
+  .hero__avatar {
+    display: none;
+  }
+}
