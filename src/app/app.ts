@@ -4,6 +4,7 @@ import { NavComponent } from './components/nav/nav';
 import { PasswordGateComponent } from './components/password-gate/password-gate';
 import { animate, query, style, transition, trigger } from '@angular/animations';
 
+const GATE_ENABLED = false;
 const STORAGE_KEY = 'jmp_authorized';
 
 @Component({
@@ -23,7 +24,7 @@ const STORAGE_KEY = 'jmp_authorized';
   ],
 })
 export class App {
-  isAuthorized = signal(localStorage.getItem(STORAGE_KEY) === 'true');
+  isAuthorized = signal(!GATE_ENABLED || localStorage.getItem(STORAGE_KEY) === 'true');
 
   onAuthorized() {
     this.isAuthorized.set(true);
