@@ -25,14 +25,10 @@ const ICON_MAP: Record<string, string> = {
   'Azure DevOps':    `${DEVICONS}/azuredevops/azuredevops-original.svg`,
   'Microsoft Azure': `${DEVICONS}/azure/azure-original.svg`,
   'Cloudflare Pages':`${DEVICONS}/cloudflare/cloudflare-original.svg`,
-  // Developer Tools (continued)
-  'Application Insights': `${SIMPLEICONS}/applicationinsights`,
-  'SSMS':            `${SIMPLEICONS}/ssms`,
   // Automation & ITSM
   'UiPath':          `${SIMPLEICONS}/uipath`,
   'n8n':             `${SIMPLEICONS}/n8n`,
-  'ServiceNow':      `${SIMPLEICONS}/servicenow`,
-  'BMC Remedy':      `${SIMPLEICONS}/remedy`,
+  'BMC Remedy':      `${SIMPLEICONS}/bmcsoftware`,
 };
 
 @Component({
