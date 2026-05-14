@@ -36,7 +36,8 @@
           [routerLink]="['/library', project.slug]"
           routerLinkActive="active"
         >
-          <div class="library__nav-thumb"></div>
+          <div class="library__nav-thumb"
+               [style.backgroundImage]="(project.logo || project.coverImage) ? 'url(' + (project.logo || project.coverImage) + ')' : null"></div>
           <span class="library__nav-name">{{ project.name }}</span>
         </a>
       }

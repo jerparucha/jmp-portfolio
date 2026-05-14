@@ -137,6 +137,8 @@
     width: 26px;
     height: 26px;
     background-color: var(--color-border);
+    background-size: cover;
+    background-position: center;
     border-radius: 2px;
     flex-shrink: 0;
   }
