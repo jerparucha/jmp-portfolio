@@ -3,15 +3,28 @@
   <ul class="contact__list">
     <li class="contact__item">
       <span class="contact__label">GitHub</span>
-      <a class="contact__value" href="https://github.com/jerparucha" target="_blank" rel="noopener">jerparucha</a>
+      <a class="contact__value contact__value--link" href="https://github.com/jerparucha" target="_blank" rel="noopener">jerparucha</a>
     </li>
     <li class="contact__item">
       <span class="contact__label">Email</span>
-      <span class="contact__value">jerparucha&#64;gmail.com</span>
+      <div class="contact__email-row">
+        <a class="contact__value contact__value--link" href="mailto:jerparucha@gmail.com">jerparucha&#64;gmail.com</a>
+        <button class="contact__copy-btn" (click)="copyEmail()" [title]="emailCopied() ? 'Copied!' : 'Copy email'">
+          @if (emailCopied()) {
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          } @else {
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          }
+        </button>
+      </div>
     </li>
     <li class="contact__item">
-      <span class="contact__label">Phone</span>
-      <span class="contact__value">Available on request</span>
+      <span class="contact__label">LinkedIn</span>
+      <a class="contact__value contact__value--link" href="https://www.linkedin.com/in/jeromemariparucha/" target="_blank" rel="noopener">jeromemariparucha</a>
     </li>
   </ul>
 </section>
