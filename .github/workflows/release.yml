@@ -40,7 +40,7 @@ jobs:
             | grep -iE '(closes|refs) #' \
             | grep -oE '#[0-9]+' \
             | sort -t'#' -k2 -n | uniq \
-            | sed 's/^/- /')
+            | tr '\n' ',' | sed 's/,$//' | sed 's/,/, /g')
 
           BODY="## What's new"$'\n'
           [ -n "$FEATS" ] && BODY+="$FEATS"$'\n'
@@ -48,7 +48,7 @@ jobs:
           [ -n "$CHORE" ] && BODY+="$CHORE"$'\n'
           if [ -n "$ISSUES" ]; then
             BODY+=$'\n'"## Issues closed"$'\n'
-            BODY+="$ISSUES"$'\n'
+            BODY+="$ISSUES"$'\n'$'\n'
           fi
 
           echo "title=$TITLE" >> $GITHUB_OUTPUT
