@@ -8,7 +8,7 @@
     <a class="hero__btn" href="mailto:jerparucha@gmail.com">Message</a>
     <button class="hero__btn hero__btn--primary" (click)="openResume()">Resume</button>
     <div class="hero__more-wrapper">
-      <button class="hero__btn" (click)="toggleMore()">{{ linkCopied() ? 'Copied!' : 'More...' }}</button>
+      <button class="hero__btn" (click)="toggleMore()" [attr.aria-expanded]="moreOpen()" aria-haspopup="true">{{ linkCopied() ? 'Copied!' : 'More...' }}</button>
       @if (moreOpen()) {
         <div class="hero__dropdown">
           <button class="hero__dropdown-item" (click)="copyLink()">Copy Profile Link</button>
@@ -21,16 +21,16 @@
 </section>
 
 @if (showResume()) {
-  <div class="resume-modal" (click)="closeResume()">
+  <div class="resume-modal" (click)="closeResume()" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
     <div class="resume-modal__dialog" (click)="$event.stopPropagation()">
       <div class="resume-modal__header">
-        <span class="resume-modal__title">Resume — Jerome Mari Parucha</span>
+        <span class="resume-modal__title" id="resume-modal-title">Resume — Jerome Mari Parucha</span>
         <a
           class="resume-modal__download"
           href="https://drive.google.com/uc?export=download&id=1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t"
           target="_blank"
           rel="noopener"
-          title="Download"
+          aria-label="Download resume"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -38,7 +38,7 @@
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
         </a>
-        <button class="resume-modal__close" (click)="closeResume()">✕</button>
+        <button class="resume-modal__close" (click)="closeResume()" aria-label="Close resume">✕</button>
       </div>
       <iframe
         class="resume-modal__frame"
