@@ -1,48 +1,72 @@
 <div class="detail">
-  <a class="detail__back" routerLink="/library">← Back to Library</a>
-
   @if (project(); as p) {
-    <div class="detail__hero">
-      <div class="detail__hero-cover"></div>
-      <div class="detail__hero-info">
+
+    <!-- #66: Full-width cinematic hero banner -->
+    <div class="detail__banner" [class.detail__banner--placeholder]="!p.coverImage"
+         [style.backgroundImage]="p.coverImage ? 'url(' + p.coverImage + ')' : null">
+<div class="detail__banner-info">
         <span class="detail__type">{{ p.type }}</span>
         <h1 class="detail__title">{{ p.name }}</h1>
-        <p class="detail__summary">{{ p.description }}</p>
-        <span class="detail__year">{{ p.year }}</span>
       </div>
     </div>
 
     <div class="detail__body">
       <div class="detail__main">
-        <div class="detail__screenshots">
-          <div class="detail__screenshot-main"></div>
-          <div class="detail__screenshot-thumbs">
-            <div class="detail__screenshot-thumb"></div>
-            <div class="detail__screenshot-thumb"></div>
-            <div class="detail__screenshot-thumb"></div>
+
+        <!-- #64: Stats bar -->
+        <div class="detail__stats">
+          <div class="detail__stat">
+            <span class="detail__stat-label">Last Updated</span>
+            <span class="detail__stat-value">{{ p.year }}</span>
+          </div>
+          <div class="detail__stat">
+            <span class="detail__stat-label">Technologies</span>
+            <span class="detail__stat-value">{{ p.tags.length }}</span>
+          </div>
+          <div class="detail__stat">
+            <span class="detail__stat-label">Status</span>
+            <span class="detail__stat-value" [attr.data-status]="p.status">{{ p.status }}</span>
           </div>
         </div>
 
-        <section class="detail__section">
-          <h2 class="detail__section-heading">About This Project</h2>
-          <p class="detail__description">{{ p.longDescription }}</p>
-        </section>
+        <!-- #65: Tab bar -->
+        <div class="detail__tabs">
+          <button class="detail__tab" [class.active]="activeTab() === 'overview'" (click)="activeTab.set('overview')">Overview</button>
+          <button class="detail__tab" [class.active]="activeTab() === 'screenshots'" (click)="activeTab.set('screenshots')">Screenshots</button>
+          <button class="detail__tab" [class.active]="activeTab() === 'tech'" (click)="activeTab.set('tech')">Tech Stack</button>
+        </div>
 
-        <section class="detail__section">
-          <h2 class="detail__section-heading">Tech Stack</h2>
-          <div class="detail__tags">
-            @for (tag of p.tags; track tag) {
-              <span class="detail__tag">{{ tag }}</span>
-            }
-          </div>
-        </section>
+        <div class="detail__tab-content">
+          @if (activeTab() === 'overview') {
+            <p class="detail__description">{{ p.longDescription }}</p>
+          }
+          @if (activeTab() === 'screenshots') {
+            <div class="detail__screenshots">
+              <div class="detail__screenshot-main"></div>
+              <div class="detail__screenshot-thumbs">
+                <div class="detail__screenshot-thumb"></div>
+                <div class="detail__screenshot-thumb"></div>
+                <div class="detail__screenshot-thumb"></div>
+              </div>
+            </div>
+          }
+          @if (activeTab() === 'tech') {
+            <div class="detail__tags">
+              @for (tag of p.tags; track tag) {
+                <span class="detail__tag">{{ tag }}</span>
+              }
+            </div>
+          }
+        </div>
+
       </div>
 
+      <!-- #63: CTA sidebar -->
       <aside class="detail__sidebar">
-        <a class="detail__cta detail__cta--primary" [href]="p.github" target="_blank" rel="noopener">View on GitHub</a>
         @if (p.demo) {
-          <a class="detail__cta detail__cta--secondary" [href]="p.demo" target="_blank" rel="noopener">Live Demo</a>
+          <a class="detail__cta detail__cta--primary" [href]="p.demo" target="_blank" rel="noopener">Open Demo</a>
         }
+        <a class="detail__cta detail__cta--secondary" [href]="p.github" target="_blank" rel="noopener">View Source</a>
 
         <div class="detail__meta">
           <div class="detail__meta-item">
@@ -64,5 +88,6 @@
         </div>
       </aside>
     </div>
+
   }
 </div>
