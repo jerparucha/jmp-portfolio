@@ -1,0 +1,47 @@
+@if (visible()) {
+  <div class="welcome-modal" (click)="dismiss()">
+    <div class="welcome-modal__dialog" (click)="$event.stopPropagation()">
+
+      <div class="welcome-modal__header">
+        <span class="welcome-modal__logo">JMP</span>
+        <button class="welcome-modal__close" (click)="dismiss()">✕</button>
+      </div>
+
+      <div class="welcome-modal__body">
+        <h2 class="welcome-modal__title">Welcome to the Portfolio</h2>
+        <p class="welcome-modal__intro">Styled as a Steam profile. Here's how to get around:</p>
+
+        <ul class="welcome-modal__sections">
+          <li class="welcome-modal__section">
+            <span class="welcome-modal__section-name">Profile</span>
+            <span class="welcome-modal__section-desc">Who I am, work experience, achievements, and contact info.</span>
+          </li>
+          <li class="welcome-modal__section">
+            <span class="welcome-modal__section-name">Library</span>
+            <span class="welcome-modal__section-desc">Projects I've built — browse, filter, and explore each one in detail.</span>
+          </li>
+          <li class="welcome-modal__section">
+            <span class="welcome-modal__section-name">Skills</span>
+            <span class="welcome-modal__section-desc">My full tech stack grouped by category.</span>
+          </li>
+          <li class="welcome-modal__section">
+            <span class="welcome-modal__section-name">Guide</span>
+            <span class="welcome-modal__section-desc">A walkthrough of how this portfolio is structured.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="welcome-modal__footer">
+        <label class="welcome-modal__toggle">
+          <input type="checkbox" [checked]="dontShow()" (change)="dontShow.set(!dontShow())" />
+          Do not show this again
+        </label>
+        <div class="welcome-modal__actions">
+          <a class="welcome-modal__link" routerLink="/guide" (click)="dismiss()">Read the guide</a>
+          <button class="welcome-modal__btn" (click)="dismiss()">Got it</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+}

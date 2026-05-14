@@ -26,6 +26,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/skills/skills').then(m => m.SkillsPage),
   },
   {
+    path: 'guide',
+    title: 'Guide',
+    loadComponent: () => import('./pages/guide/guide').then(m => m.GuidePage),
+  },
+  {
     path: '**',
     title: '404 — Page Not Found',
     loadComponent: () => import('./pages/not-found/not-found').then(m => m.NotFoundPage),
