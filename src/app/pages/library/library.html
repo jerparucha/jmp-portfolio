@@ -20,14 +20,13 @@
           [ngModel]="state.searchQuery()"
           (ngModelChange)="state.searchQuery.set($event)"
         />
-        <button class="library__nav-filter-btn" (click)="filterPanelOpen.set(true)" title="Filters">
+        <button class="library__nav-filter-btn" (click)="filterPanelOpen.set(true)" aria-label="Open filters">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
             <rect x="0" y="0" width="14" height="2"/><rect x="2" y="5" width="10" height="2"/><rect x="4" y="10" width="6" height="2"/>
           </svg>
         </button>
       </div>
 
-      <button class="library__nav-collections" disabled>Collections</button>
 
       <div class="library__nav-list">
       @for (project of state.filteredProjects(); track project.slug) {
@@ -60,7 +59,7 @@
     <div class="library__filter-panel">
       <div class="library__filter-panel-header">
         <h2 class="library__filter-panel-title">Library Filters</h2>
-        <button class="library__filter-panel-close" (click)="filterPanelOpen.set(false)">✕</button>
+        <button class="library__filter-panel-close" (click)="filterPanelOpen.set(false)" aria-label="Close filters">✕</button>
       </div>
 
       <div class="library__filter-panel-body">
@@ -99,7 +98,7 @@
         @if (state.hasActiveFilters) {
           <button class="library__filter-clear" (click)="state.clearFilters()">Clear all filters</button>
         }
-        <button class="library__filter-apply" (click)="filterPanelOpen.set(false)">Apply</button>
+        <button class="library__filter-apply" (click)="filterPanelOpen.set(false)">Close</button>
       </div>
     </div>
   }
