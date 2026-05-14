@@ -27,8 +27,24 @@
     gap: var(--spacing-sm);
     padding: var(--spacing-xs) 0;
     border-bottom: 1px solid rgba(61, 90, 110, 0.4);
+    text-decoration: none;
+    color: inherit;
 
     &:last-child { border-bottom: none; }
+
+    &--link {
+      cursor: pointer;
+      border-radius: 2px;
+      margin: 0 calc(-1 * var(--spacing-xs));
+      padding-left: var(--spacing-xs);
+      padding-right: var(--spacing-xs);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.04);
+
+        .profile-stats__label { color: var(--color-text); }
+      }
+    }
   }
 
   &__label {

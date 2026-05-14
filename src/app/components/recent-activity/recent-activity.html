@@ -1,5 +1,5 @@
 <section class="recent-activity">
-  <h2 class="recent-activity__heading">Recent Activity</h2>
+  <h2 class="recent-activity__heading">Projects</h2>
   <div class="recent-activity__list">
     @for (project of projects; track project.slug) {
       <a class="recent-activity__card" [routerLink]="['/library', project.slug]">
