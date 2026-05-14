@@ -1,55 +1,40 @@
 .detail {
-  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 
-  &__back {
-    display: inline-block;
-    color: var(--color-text-muted);
-    font-size: 13px;
-    text-decoration: none;
-    margin-bottom: var(--spacing-lg);
-    transition: color 0.15s ease;
-
-    &:hover {
-      color: var(--color-accent);
-    }
-  }
-
-  &__hero {
-    display: flex;
-    gap: var(--spacing-xl);
+  // ── #66: Cinematic hero banner ────────────────────────────────
+  &__banner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 5;
     background-color: var(--color-panel);
-    border: 1px solid var(--color-border);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: var(--spacing-xl);
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 0;
-    }
-  }
-
-  &__hero-cover {
-    width: 320px;
-    flex-shrink: 0;
-    aspect-ratio: 460 / 215;
-    background-color: var(--color-border);
-
-    @media (max-width: 768px) {
-      width: 100%;
-    }
-  }
-
-  &__hero-info {
-    padding: var(--spacing-xl);
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
-    justify-content: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
 
-    @media (max-width: 768px) {
-      padding: var(--spacing-md);
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 20%, rgba(0, 0, 0, 0.75) 100%);
     }
+
+    &--placeholder {
+      background: linear-gradient(135deg, var(--color-panel) 0%, var(--color-border) 100%);
+    }
+  }
+
+&__banner-info {
+    position: relative;
+    z-index: 1;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
   }
 
   &__type {
@@ -61,32 +46,24 @@
   }
 
   &__title {
-    color: var(--color-text);
-    font-size: 26px;
+    color: #fff;
+    font-size: 28px;
     font-weight: 700;
     line-height: 1.2;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   }
 
-  &__summary {
-    color: var(--color-text-muted);
-    font-size: 14px;
-    line-height: 1.6;
-    max-width: 540px;
-  }
-
-  &__year {
-    color: var(--color-text-muted);
-    font-size: 12px;
-    margin-top: var(--spacing-xs);
-  }
-
+  // ── Body layout ───────────────────────────────────────────────
   &__body {
     display: flex;
     gap: var(--spacing-xl);
     align-items: flex-start;
+    padding: var(--spacing-xl);
+    flex: 1;
 
     @media (max-width: 768px) {
       flex-direction: column;
+      padding: var(--spacing-md);
     }
   }
 
@@ -95,7 +72,84 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+  }
+
+  // ── #64: Stats bar ────────────────────────────────────────────
+  &__stats {
+    display: flex;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-right: 1px solid var(--color-border);
+
+    &:last-child { border-right: none; }
+  }
+
+  &__stat-label {
+    color: var(--color-text-muted);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__stat-value {
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+
+    &[data-status='Live'] { color: #5ba85a; }
+    &[data-status='In Progress'] { color: #e8a838; }
+    &[data-status='Archived'] { color: var(--color-text-muted); }
+  }
+
+  // ── #65: Tab bar ──────────────────────────────────────────────
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-family: inherit;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+
+    &:hover { color: var(--color-text); }
+
+    &.active {
+      color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+    }
+  }
+
+  &__tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  &__description {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-line;
   }
 
   &__screenshots {
@@ -123,34 +177,9 @@
     border-radius: 2px;
     opacity: 0.6;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    transition: opacity 0.15s;
 
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  &__section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-
-  &__section-heading {
-    color: var(--color-text);
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  &__description {
-    color: var(--color-text-muted);
-    font-size: 14px;
-    line-height: 1.7;
-    white-space: pre-line;
+    &:hover { opacity: 1; }
   }
 
   &__tags {
@@ -168,47 +197,47 @@
     background-color: var(--color-panel);
   }
 
+  // ── #63: CTA sidebar ──────────────────────────────────────────
   &__sidebar {
-    width: 240px;
+    width: 200px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+    position: sticky;
+    top: var(--spacing-xl);
 
     @media (max-width: 768px) {
       width: 100%;
+      position: static;
     }
   }
 
   &__cta {
     display: block;
     text-align: center;
-    padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 2px;
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    transition: filter 0.15s ease;
+    transition: filter 0.15s;
 
     &--primary {
       background-color: var(--color-accent);
       color: var(--color-bg-darker);
+      font-size: 16px;
+      padding: var(--spacing-md) var(--spacing-lg);
 
-      &:hover {
-        filter: brightness(1.1);
-      }
+      &:hover { filter: brightness(1.1); color: var(--color-bg-darker); }
     }
 
     &--secondary {
       background-color: var(--color-panel);
       border: 1px solid var(--color-border);
       color: var(--color-text);
-      margin-top: var(--spacing-xs);
+      font-size: 13px;
+      padding: var(--spacing-sm) var(--spacing-lg);
 
-      &:hover {
-        border-color: var(--color-accent);
-        color: var(--color-accent);
-      }
+      &:hover { border-color: var(--color-accent); color: var(--color-accent); }
     }
   }
 
