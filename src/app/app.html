@@ -1,5 +1,6 @@
 @if (isAuthorized()) {
   <app-nav />
+  <app-welcome-modal />
   <main class="main-content">
     <div class="route-wrapper" [@routeAnimations]="getRouteState(outlet)">
       <router-outlet #outlet="outlet" />

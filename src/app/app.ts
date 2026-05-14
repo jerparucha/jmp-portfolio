@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './components/nav/nav';
 import { PasswordGateComponent } from './components/password-gate/password-gate';
+import { WelcomeModalComponent } from './components/welcome-modal/welcome-modal';
 import { animate, query, style, transition, trigger } from '@angular/animations';
 
 const GATE_ENABLED = false;
@@ -9,7 +10,7 @@ const STORAGE_KEY = 'jmp_authorized';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavComponent, PasswordGateComponent],
+  imports: [RouterOutlet, NavComponent, PasswordGateComponent, WelcomeModalComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   animations: [
