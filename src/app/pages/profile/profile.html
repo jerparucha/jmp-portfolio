@@ -1,7 +1,82 @@
 <div class="profile-page">
   <app-hero />
-  <app-about />
-  <app-experience />
-  <app-contact />
+
+  <div class="profile-page__layout">
+
+    <div class="profile-page__main">
+      <app-about />
+
+      <!-- #44: Featured Projects -->
+      <section class="profile-featured">
+        <h2 class="profile-featured__heading">Featured Projects</h2>
+        <div class="profile-featured__cards">
+          @for (project of featuredProjects; track project.slug) {
+            <a class="profile-featured__card" [routerLink]="['/library', project.slug]">
+              <div class="profile-featured__cover"></div>
+              <div class="profile-featured__info">
+                <span class="profile-featured__type">{{ project.type }}</span>
+                <h3 class="profile-featured__name">{{ project.name }}</h3>
+                <p class="profile-featured__desc">{{ project.description }}</p>
+              </div>
+            </a>
+          }
+        </div>
+      </section>
+
+      <!-- #45: Achievements / Cert Badges -->
+      <section class="profile-badges">
+        <h2 class="profile-badges__heading">Achievements</h2>
+        <div class="profile-badges__list">
+          <div class="profile-badges__badge">
+            <div class="profile-badges__icon profile-badges__icon--azure"></div>
+            <div class="profile-badges__info">
+              <span class="profile-badges__name">Azure Fundamentals</span>
+              <span class="profile-badges__meta">Microsoft · AZ-900 · 2024</span>
+            </div>
+          </div>
+          <div class="profile-badges__badge">
+            <div class="profile-badges__icon profile-badges__icon--laude"></div>
+            <div class="profile-badges__info">
+              <span class="profile-badges__name">Cum Laude</span>
+              <span class="profile-badges__meta">University of Santo Tomas · BS IT · 2023</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- #46: Skills Preview -->
+      <section class="profile-skills">
+        <div class="profile-skills__header">
+          <h2 class="profile-skills__heading">Skills</h2>
+          <a class="profile-skills__view-all" routerLink="/skills">View all →</a>
+        </div>
+        <div class="profile-skills__categories">
+          @for (cat of skillCategories; track cat.name) {
+            <div class="profile-skills__category">
+              <span class="profile-skills__cat-name">{{ cat.name }}</span>
+              <div class="profile-skills__tags">
+                @for (skill of cat.skills.slice(0, 4); track skill) {
+                  <span class="profile-skills__tag">{{ skill }}</span>
+                }
+                @if (cat.skills.length > 4) {
+                  <span class="profile-skills__more">+{{ cat.skills.length - 4 }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+
+      <app-experience />
+      <app-contact />
+    </div>
+
+    <!-- #43: Stats sidebar -->
+    <aside class="profile-page__sidebar">
+      <app-profile-stats />
+    </aside>
+
+  </div>
+
   <app-recent-activity />
 </div>

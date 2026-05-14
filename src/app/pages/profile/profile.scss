@@ -1,5 +1,236 @@
 .profile-page {
-  h1 {
+  &__layout {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+    margin-top: var(--spacing-xl);
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  &__sidebar {
+    width: 220px;
+    flex-shrink: 0;
+
+    @media (max-width: 900px) {
+      width: 100%;
+    }
+  }
+}
+
+// ── #44: Featured Projects ────────────────────────────────────
+.profile-featured {
+  &__heading {
+    color: var(--color-text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  &__card {
+    display: flex;
+    gap: var(--spacing-lg);
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.15s;
+
+    &:hover { border-color: var(--color-accent); }
+  }
+
+  &__cover {
+    width: 180px;
+    flex-shrink: 0;
+    background-color: var(--color-border);
+    aspect-ratio: 460 / 215;
+
+    @media (max-width: 640px) {
+      width: 120px;
+    }
+  }
+
+  &__info {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    justify-content: center;
+  }
+
+  &__type {
+    color: var(--color-accent);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__name {
     color: var(--color-text);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__desc {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+// ── #45: Achievement Badges ───────────────────────────────────
+.profile-badges {
+  &__heading {
+    color: var(--color-text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex: 1;
+    min-width: 220px;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: var(--color-border);
+
+    &--azure {
+      background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+    }
+
+    &--laude {
+      background: linear-gradient(135deg, #c9a84c 0%, #8a6914 100%);
+    }
+  }
+
+  &__name {
+    display: block;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__meta {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+}
+
+// ── #46: Skills Preview ───────────────────────────────────────
+.profile-skills {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__heading {
+    color: var(--color-text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__view-all {
+    color: var(--color-accent);
+    font-size: 12px;
+    text-decoration: none;
+
+    &:hover { color: var(--color-text); }
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  &__category {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-lg);
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+  }
+
+  &__cat-name {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  &__tag {
+    color: var(--color-text);
+    font-size: 12px;
+    padding: 2px var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    background-color: var(--color-panel);
+  }
+
+  &__more {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    padding: 2px var(--spacing-sm);
   }
 }
