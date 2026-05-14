@@ -10,7 +10,13 @@
         @for (skill of category.skills; track skill) {
           <div class="skills__card">
             <div class="skills__card-icon">
-              <span class="skills__card-initial">{{ skill[0] }}</span>
+              @if (iconMap[skill]) {
+                <img class="skills__card-img" [src]="iconMap[skill]" [alt]="skill"
+                     (error)="$any($event.target).style.display='none'; $any($event.target).nextElementSibling.style.display='inline'" />
+                <span class="skills__card-initial" style="display:none">{{ skill[0] }}</span>
+              } @else {
+                <span class="skills__card-initial">{{ skill[0] }}</span>
+              }
             </div>
             <span class="skills__card-name">{{ skill }}</span>
           </div>
