@@ -58,5 +58,12 @@ Visit a job posting and the description is automatically saved. Click Apply and 
     github: 'https://github.com/jerparucha/OLJ-JD-Helper-Extension',
     demo: null,
     status: 'Live',
+    logo: 'images/projects/olj-jd-helper-logo.svg',
+    coverImage: 'images/projects/olj-jd-helper/screenshot-2.png',
+    screenshots: [
+      'images/projects/olj-jd-helper/screenshot-2.png',
+      'images/projects/olj-jd-helper/screenshot-1.png',
+      'images/projects/olj-jd-helper/screenshot-3.png',
+    ],
   },
 ];
