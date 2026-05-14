@@ -12,6 +12,7 @@ export interface Project {
   demo: string | null;
   status: ProjectStatus;
   coverImage?: string;
+  featured?: boolean;
 }
 
 export const PROJECTS: Project[] = [
@@ -28,6 +29,7 @@ Features include a summary dashboard with stat cards and donut charts, a waterfa
     github: 'https://github.com/jerparucha/har-analyzer',
     demo: 'https://har-analyzer-jmp.vercel.app/',
     status: 'Live',
+    featured: true,
   },
   {
     slug: 'olj-jd-helper',
