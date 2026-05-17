@@ -12,8 +12,8 @@
       @if (moreOpen()) {
         <div class="hero__dropdown">
           <button class="hero__dropdown-item" (click)="copyLink()">Copy Profile Link</button>
-          <a class="hero__dropdown-item" href="https://drive.google.com/uc?export=download&id=1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t" target="_blank" rel="noopener" (click)="moreOpen.set(false); notifications.notify('resume_downloaded')">Download Resume</a>
-          <a class="hero__dropdown-item" href="https://www.linkedin.com/in/jeromemariparucha/" target="_blank" rel="noopener" (click)="moreOpen.set(false)">LinkedIn</a>
+          <a class="hero__dropdown-item" href="https://drive.google.com/uc?export=download&id=1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t" target="_blank" rel="noopener noreferrer" (click)="moreOpen.set(false); notifications.notify('resume_downloaded')">Download Resume</a>
+          <a class="hero__dropdown-item" href="https://www.linkedin.com/in/jeromemariparucha/" target="_blank" rel="noopener noreferrer" (click)="moreOpen.set(false)">LinkedIn</a>
         </div>
       }
     </div>
@@ -29,7 +29,7 @@
           class="resume-modal__download"
           href="https://drive.google.com/uc?export=download&id=1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="Download resume"
           (click)="notifications.notify('resume_downloaded')"
         >
