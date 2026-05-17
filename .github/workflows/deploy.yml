@@ -23,6 +23,7 @@ jobs:
       - name: Inject secrets
         run: |
           sed -i "s|DISCORD_WEBHOOK_PLACEHOLDER|${{ secrets.DISCORD_WEBHOOK_RESUME_DOWNLOAD }}|g" src/environments/environment.prod.ts
+          sed -i "s|PASSWORD_GATE_PLACEHOLDER|${{ secrets.PASSWORD_GATE }}|g" src/environments/environment.prod.ts
 
       - name: Build
         run: npm run build
