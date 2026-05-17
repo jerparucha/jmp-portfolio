@@ -1,5 +1,6 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { Location } from '@angular/common';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-hero',
@@ -11,11 +12,13 @@ export class HeroComponent {
   moreOpen = signal(false);
   linkCopied = signal(false);
 
-  constructor(private location: Location) {}
+  private location = inject(Location);
+  protected notifications = inject(NotificationService);
 
   openResume() {
     this.showResume.set(true);
     this.location.go('/resume');
+    this.notifications.notify('resume_viewed');
   }
 
   closeResume() {
