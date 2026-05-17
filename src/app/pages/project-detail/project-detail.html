@@ -42,11 +42,24 @@
           }
           @if (activeTab() === 'screenshots') {
             <div class="detail__screenshots">
-              <div class="detail__screenshot-main"
-                   [style.backgroundImage]="selectedScreenshot() ? 'url(' + selectedScreenshot() + ')' : null"></div>
-              @if (p.screenshots && p.screenshots.length > 1) {
+              <div class="detail__screenshot-viewer">
+                @if (screenshots().length > 1) {
+                  <button class="detail__nav detail__nav--prev" (click)="prev()" aria-label="Previous screenshot">&#8249;</button>
+                }
+                <div class="detail__screenshot-main"
+                     [style.backgroundImage]="selectedScreenshot() ? 'url(' + selectedScreenshot() + ')' : null"
+                     (click)="openLightbox()"
+                     role="button"
+                     tabindex="0"
+                     (keydown.enter)="openLightbox()"
+                     aria-label="View fullscreen"></div>
+                @if (screenshots().length > 1) {
+                  <button class="detail__nav detail__nav--next" (click)="next()" aria-label="Next screenshot">&#8250;</button>
+                }
+              </div>
+              @if (screenshots().length > 1) {
                 <div class="detail__screenshot-thumbs">
-                  @for (shot of p.screenshots; track shot) {
+                  @for (shot of screenshots(); track shot) {
                     <div class="detail__screenshot-thumb"
                          [class.active]="selectedScreenshot() === shot"
                          [style.backgroundImage]="'url(' + shot + ')'"
@@ -60,6 +73,7 @@
                   }
                 </div>
               }
+              <p class="detail__screenshot-hint">{{ selectedIndex() + 1 }} / {{ screenshots().length }} &nbsp;·&nbsp; Click image to fullscreen</p>
             </div>
           }
           @if (activeTab() === 'tech') {
@@ -103,3 +117,17 @@
 
   }
 </div>
+
+@if (lightboxOpen()) {
+  <div class="lightbox" (click)="closeLightbox()" role="dialog" aria-modal="true" aria-label="Fullscreen screenshot">
+    <button class="lightbox__close" (click)="closeLightbox()" aria-label="Close">&#10005;</button>
+    @if (screenshots().length > 1) {
+      <button class="lightbox__nav lightbox__nav--prev" (click)="$event.stopPropagation(); prev()" aria-label="Previous">&#8249;</button>
+    }
+    <img class="lightbox__img" [src]="selectedScreenshot()" [alt]="'Screenshot ' + (selectedIndex() + 1)" (click)="$event.stopPropagation()" />
+    @if (screenshots().length > 1) {
+      <button class="lightbox__nav lightbox__nav--next" (click)="$event.stopPropagation(); next()" aria-label="Next">&#8250;</button>
+    }
+    <span class="lightbox__counter">{{ selectedIndex() + 1 }} / {{ screenshots().length }}</span>
+  </div>
+}
