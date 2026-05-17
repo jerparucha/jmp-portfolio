@@ -19,7 +19,9 @@ jobs:
         id: notes
         run: |
           TAG="${{ github.ref_name }}"
-          TITLE=$(git for-each-ref "refs/tags/$TAG" --format='%(contents:subject)')
+
+          # Reliably read annotated tag message (skip header lines up to blank line)
+          TITLE=$(git cat-file tag "$TAG" 2>/dev/null | awk 'found{print; exit} /^$/{found=1}')
           [ -z "$TITLE" ] && TITLE="$TAG"
 
           PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
@@ -29,10 +31,16 @@ jobs:
             LOG_RANGE=""
           fi
 
-          FEATS=$(git log --pretty=format:"%s" $LOG_RANGE | grep "^feat:" | sed 's/^feat: /- /')
-          FIXES=$(git log --pretty=format:"%s" $LOG_RANGE | grep "^fix:"  | sed 's/^fix: /- /')
-          CHORE=$(git log --pretty=format:"%s" $LOG_RANGE | grep "^chore:" | sed 's/^chore: /- /')
-          ISSUES=$(git log --pretty=format:"%s %b" $LOG_RANGE | grep -oE '(Closes|Refs) #[0-9]+' | grep -oE '#[0-9]+' | sort -u | sed 's/^/- /')
+          FEATS=$(git log --pretty=format:"%s" $LOG_RANGE | grep -E "^(feat|perf|polish):" | sed 's/^[^:]*: /- /')
+          FIXES=$(git log --pretty=format:"%s" $LOG_RANGE | grep -E "^fix:"              | sed 's/^fix: /- /')
+          CHORE=$(git log --pretty=format:"%s" $LOG_RANGE | grep -E "^(chore|refactor):" | sed 's/^[^:]*: /- /')
+
+          # Filter lines containing Closes/Refs, then extract every #N on those lines
+          ISSUES=$(git log --pretty=format:"%s %b" $LOG_RANGE \
+            | grep -iE '(closes|refs) #' \
+            | grep -oE '#[0-9]+' \
+            | sort -t'#' -k2 -n | uniq \
+            | tr '\n' ',' | sed 's/,$//' | sed 's/,/, /g')
 
           BODY="## What's new"$'\n'
           [ -n "$FEATS" ] && BODY+="$FEATS"$'\n'
@@ -40,7 +48,7 @@ jobs:
           [ -n "$CHORE" ] && BODY+="$CHORE"$'\n'
           if [ -n "$ISSUES" ]; then
             BODY+=$'\n'"## Issues closed"$'\n'
-            BODY+="$ISSUES"$'\n'
+            BODY+="$ISSUES"$'\n'$'\n'
           fi
 
           echo "title=$TITLE" >> $GITHUB_OUTPUT

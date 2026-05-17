@@ -159,13 +159,47 @@
     gap: var(--spacing-sm);
   }
 
+  &__screenshot-viewer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
   &__screenshot-main {
-    width: 100%;
+    flex: 1;
     aspect-ratio: 16 / 9;
     background-color: var(--color-border);
     background-size: cover;
     background-position: center;
     border-radius: 2px;
+    cursor: zoom-in;
+    transition: opacity 0.15s;
+    &:hover { opacity: 0.9; }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.15s;
+    &:hover { background: rgba(0, 0, 0, 0.8); }
+    &--prev { left: 0; }
+    &--next { right: 0; }
+  }
+
+  &__screenshot-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: right;
   }
 
   &__screenshot-thumbs {
@@ -289,5 +323,63 @@
     padding: 2px var(--spacing-sm);
     border: 1px solid var(--color-border);
     border-radius: 2px;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    &:hover { opacity: 1; }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    font-size: 3rem;
+    line-height: 1;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.15s;
+    &:hover { background: rgba(255, 255, 255, 0.2); }
+    &--prev { left: 16px; }
+    &--next { right: 16px; }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
   }
 }

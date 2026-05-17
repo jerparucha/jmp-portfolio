@@ -1,7 +1,8 @@
 @if (isAuthorized()) {
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <app-nav />
   <app-welcome-modal />
-  <main class="main-content">
+  <main class="main-content" id="main-content">
     <div class="route-wrapper" [@routeAnimations]="getRouteState(outlet)">
       <router-outlet #outlet="outlet" />
     </div>

@@ -12,8 +12,8 @@
       @if (moreOpen()) {
         <div class="hero__dropdown">
           <button class="hero__dropdown-item" (click)="copyLink()">Copy Profile Link</button>
-          <a class="hero__dropdown-item" href="https://drive.google.com/uc?export=download&id=1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t" target="_blank" rel="noopener" (click)="moreOpen.set(false)">Download Resume</a>
-          <a class="hero__dropdown-item" href="https://www.linkedin.com/in/jeromemariparucha/" target="_blank" rel="noopener" (click)="moreOpen.set(false)">LinkedIn</a>
+          <a class="hero__dropdown-item" href="https://drive.google.com/uc?export=download&id=1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t" target="_blank" rel="noopener noreferrer" (click)="moreOpen.set(false); notifications.notify('resume_downloaded')">Download Resume</a>
+          <a class="hero__dropdown-item" href="https://www.linkedin.com/in/jeromemariparucha/" target="_blank" rel="noopener noreferrer" (click)="moreOpen.set(false)">LinkedIn</a>
         </div>
       }
     </div>
@@ -29,8 +29,9 @@
           class="resume-modal__download"
           href="https://drive.google.com/uc?export=download&id=1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="Download resume"
+          (click)="notifications.notify('resume_downloaded')"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -44,6 +45,8 @@
         class="resume-modal__frame"
         src="https://drive.google.com/file/d/1KBZ19RzuWm9fZ726mQAh3uOo6vs1BH4t/preview"
         allow="autoplay"
+        sandbox="allow-scripts allow-same-origin allow-popups"
+        title="Resume — Jerome Mari Parucha"
       ></iframe>
     </div>
   </div>
